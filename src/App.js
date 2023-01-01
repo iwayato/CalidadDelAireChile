@@ -4,6 +4,6 @@ function App() {
       calidad del aire app
     </div>
   );
-}
+} 
 
 export default App;
