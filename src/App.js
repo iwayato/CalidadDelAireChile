@@ -4,10 +4,11 @@ import {
     Heading,
     Grid,
     GridItem,
-    Center,} from "@chakra-ui/react";
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Map from "./components/Map";
+import StatusSideBar from "./components/StatusSideBar";
 import './App.css';
 
 const url = "https://sinca.mma.gob.cl/index.php/json/listadomapa2k19/";
@@ -33,18 +34,22 @@ function App() {
                             "nav main"
                             "nav footer"`}
             gridTemplateRows={'70px 1fr 30px'}
-            gridTemplateColumns={'0px 1fr'}
+            gridTemplateColumns={'250px 1fr'}
             color='blackAlpha.700'
             fontWeight='bold'>
 
-            <GridItem pl='2' bg='gray.100' area={'header'}>
-                <Center>
-                    <Heading>Air quality map - {' '}
+            <GridItem pl='17px' bg='gray.100' area={'header'}>
+                    <Heading mt='11px' >Air quality map - {' '}
                         <Link color='teal.500' href='https://es.wikipedia.org/wiki/Chile'>
                             Chile
                         </Link>
                     </Heading>
-                </Center>
+            </GridItem>
+
+            <GridItem bg='gray.400' area={'nav'}>
+                <StatusSideBar
+                    data = {data}>
+                </StatusSideBar>
             </GridItem>
 
             <GridItem bg='green.300' area={'main'}>

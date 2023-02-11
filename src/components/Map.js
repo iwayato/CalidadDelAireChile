@@ -31,10 +31,10 @@ const Map = ({stationsData}) => {
     return(
         <MapContainer
             zoomControl={false}
-            minZoom={5}
+            minZoom={4}
             dragging={true} 
             center={[-34.135020, -71.565964]} 
-            zoom={5} 
+            zoom={4} 
             scrollWheelZoom={true}>
 
             <TileLayer
