@@ -2,7 +2,7 @@ import {
     MapContainer, 
     TileLayer,
     Marker,
-    Popup
+    Popup,
 } from 'react-leaflet'
 import {
     VStack,
@@ -11,17 +11,20 @@ import {
     Button,
     useDisclosure,
     Modal,
-    ModalOverlay,
     ModalContent,
-    ModalHeader,
     ModalBody,
     ModalCloseButton,
+    Box,
+    Divider,
 } from '@chakra-ui/react';
+import MarkerClusterGroup from 'react-leaflet-cluster'
+import "leaflet/dist/leaflet.css";
 import Chart from './Chart';
+import { iconSelector } from './iconSelector.js'
 
 const Map = ({stationsData}) => {
 
-    console.log(stationsData);
+    // console.log(stationsData);
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -39,38 +42,45 @@ const Map = ({stationsData}) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
             </TileLayer>
 
-            {stationsData.map(station => 
-                <Marker
-                    key={station.key}
-                    position={[station.latitud, station.longitud]}>
-                    <Popup closeButton={true}>
-                        <VStack
-                            spacing={3}
-                            align='stretch'>
-                            <Heading size='lg'>{station.nombre}</Heading>
-                            <Text fontSize='sm'>{station.region}</Text>
-                            <Text fontSize='sm'>Comune : {station.comuna}</Text>
-                            <Button
-                                colorScheme='blue'
-                                onClick={onOpen}>
-                                See graphics
-                            </Button>
-                            <Modal isOpen={isOpen} onClose={onClose} size='lg' isCentered>
-                                <ModalOverlay
-                                    backdropFilter='blur(1px)'/>
-                                <ModalContent>
-                                    <ModalHeader>Quality air graphics</ModalHeader>
-                                    <ModalCloseButton />
-                                    <ModalBody>
-                                        {/* Gráfico con los datos de la API */}
-                                        <Chart></Chart>
-                                    </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                        </VStack>
-                    </Popup>
-                </Marker>
-            )}
+            <MarkerClusterGroup chunkedLoading>
+                {stationsData.map(station => 
+                    <Marker
+                        icon={iconSelector(station.realtime)}
+                        key={station.key}
+                        position={[station.latitud, station.longitud]}>
+                        <Popup closeButton={false}>
+                            <VStack
+                                spacing={3}
+                                align='stretch'>
+                                <Heading size='lg' color='#252b34'>{station.nombre}</Heading>
+                                <Divider></Divider>
+                                <Text fontSize='sm' color='gray.600'>{station.region}</Text>
+                                <Text fontSize='sm' color='gray.600'>Comune : {station.comuna}</Text>
+                                <Divider></Divider>
+                                <Text fontSize='sm' color='gray.600'>Latitude : {station.latitud}</Text>
+                                <Text fontSize='sm' color='gray.600'>Longitude : {station.longitud}</Text>
+                                <Divider></Divider>
+                                <Button
+                                    colorScheme='blue'
+                                    onClick={onOpen}>
+                                    See graphics
+                                </Button>
+                                <Modal isOpen={isOpen} onClose={onClose} size='6xl' isCentered>
+                                    <ModalContent>
+                                        <ModalCloseButton size='md'/>
+                                        <ModalBody>
+                                            {/* Gráfico con los datos de la API */}
+                                            <Box>
+                                                <Chart></Chart>
+                                            </Box>
+                                        </ModalBody>
+                                    </ModalContent>
+                                </Modal>
+                            </VStack>
+                        </Popup>
+                    </Marker>
+                )}
+            </MarkerClusterGroup>
         </MapContainer>
     )
 }
