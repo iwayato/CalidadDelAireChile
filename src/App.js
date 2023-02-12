@@ -23,10 +23,12 @@ function App() {
             .then(response => {
                 console.log('Promise fulfilled')
                 setData(response.data)})
-            .catch("Error al obtener datos desde la API")
+            .catch("Error when getting data from API")
     }
 
     useEffect(getData, [])
+
+    console.log(data);
 
     return (
         <Grid
@@ -38,12 +40,12 @@ function App() {
             color='blackAlpha.700'
             fontWeight='bold'>
 
-            <GridItem pl='17px' bg='gray.100' area={'header'}>
-                    <Heading mt='11px' >Air quality map - {' '}
-                        <Link color='teal.500' href='https://es.wikipedia.org/wiki/Chile'>
-                            Chile
-                        </Link>
-                    </Heading>
+            <GridItem pl='15px' bg='gray.100' area={'header'}>
+                <Heading mt='13px' >Air quality map - {' '}
+                    <Link color='teal.500' href='https://es.wikipedia.org/wiki/Chile'>
+                        Chile
+                    </Link>
+                </Heading>
             </GridItem>
 
             <GridItem bg='gray.400' area={'nav'}>
@@ -52,11 +54,9 @@ function App() {
                 </StatusSideBar>
             </GridItem>
 
-            <GridItem bg='green.300' area={'main'}>
+            <GridItem area={'main'}>
                 {/* Map Component With Props */}
-                <Map
-                    stationsData = {data}>
-                </Map>
+                <Map stationsData = {data}/>
             </GridItem>
 
             <GridItem pl='2' bg='gray.600' area={'footer'} color='white'>

@@ -21,10 +21,9 @@ import MarkerClusterGroup from 'react-leaflet-cluster'
 import "leaflet/dist/leaflet.css";
 import Chart from './Chart';
 import { iconSelector } from './iconSelector.js'
+import { dataComposer } from './dataComposer.js'
 
 const Map = ({stationsData}) => {
-
-    // console.log(stationsData);
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -43,12 +42,14 @@ const Map = ({stationsData}) => {
             </TileLayer>
 
             <MarkerClusterGroup chunkedLoading>
-                {stationsData.map(station => 
+                {stationsData.map( (station) => 
                     <Marker
                         icon={iconSelector(station.realtime)}
                         key={station.key}
                         position={[station.latitud, station.longitud]}>
+
                         <Popup closeButton={false}>
+
                             <VStack
                                 spacing={3}
                                 align='stretch'>
@@ -65,18 +66,22 @@ const Map = ({stationsData}) => {
                                     onClick={onOpen}>
                                     See graphics
                                 </Button>
-                                <Modal isOpen={isOpen} onClose={onClose} size='6xl' isCentered>
-                                    <ModalContent>
-                                        <ModalCloseButton size='md'/>
-                                        <ModalBody>
-                                            {/* Gráfico con los datos de la API */}
-                                            <Box>
-                                                <Chart></Chart>
-                                            </Box>
-                                        </ModalBody>
-                                    </ModalContent>
-                                </Modal>
                             </VStack>
+
+                            <Modal isOpen={isOpen} onClose={onClose} size='6xl' isCentered>
+                                <ModalContent>
+                                    <ModalCloseButton size='md'/>
+                                    <ModalBody>
+                                        <Box>
+                                            {/* Gráfico con los datos de la API */}
+                                            {/* Idea : generar el array de datos a plotear en App.js
+                                                y mapearlos con la id al respectivo componente (estacion) */}
+                                            <Chart plotData = {dataComposer(station.realtime)}/>
+                                        </Box>
+                                    </ModalBody>
+                                </ModalContent>
+                            </Modal>
+
                         </Popup>
                     </Marker>
                 )}
