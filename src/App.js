@@ -4,6 +4,9 @@ import {
     Heading,
     Grid,
     GridItem,
+    HStack,
+    Button,
+    Box,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -38,12 +41,19 @@ function App() {
             color='blackAlpha.700'
             fontWeight='bold'>
 
-            <GridItem pl='15px' bg='gray.100' area={'header'}>
-                <Heading mt='13px' >Air quality map - {' '}
-                    <Link color='teal.500' href='https://es.wikipedia.org/wiki/Chile'>
-                        Chile
-                    </Link>
-                </Heading>
+            <GridItem pl = '15px' bg = 'gray.100' area = {'header'}>
+                <HStack mt = '13px'>
+                    <Heading>Air quality map - {' '}
+                        <Link color='teal.500' href='https://es.wikipedia.org/wiki/Chile'>
+                            Chile
+                        </Link>
+                    </Heading>
+                    <Box
+                        as = {Button} 
+                        left = 'calc(100% - 675px)'>
+                            ¿Qué es lo que se esta midiendo?
+                    </Box>
+                </HStack>
             </GridItem>
 
             <GridItem bg='gray.400' area={'nav'}>
