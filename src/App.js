@@ -28,8 +28,6 @@ function App() {
 
     useEffect(getData, [])
 
-    console.log(data);
-
     return (
         <Grid
             templateAreas={`"header header"
