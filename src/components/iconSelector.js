@@ -11,23 +11,21 @@ export function iconSelector(realtime) {
         }
     }
 
-    if (max === 1){
-        return Icons.bueno
-    }
-    if (max === 2){
-        return Icons.regular
-    }
-    if (max === 3){
-        return Icons.alerta
-    }
-    if (max === 4){
-        return Icons.preemergencia
-    }
-    if (max === 5){
-        return Icons.emergencia
-    }
-    if (max === 6){
-        return Icons.noDisponible
+    switch (max) {
+        case 1:
+            return Icons.bueno
+        case 2:
+            return Icons.regular
+        case 3:
+            return Icons.alerta
+        case 4:
+            return Icons.preemergencia
+        case 5:
+            return Icons.emergencia
+        case 6:
+            return Icons.noDisponible
+        default:
+            return Icons.noDisponible
     }
 }
 

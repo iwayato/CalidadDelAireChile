@@ -1,32 +1,26 @@
-import { faker } from '@faker-js/faker';
+import { 
+    Text
+} from '@chakra-ui/react'
+import { unitSelector } from './unitSelector.js'
+import { parameterTextConverter } from './parameterTextConverter.js'
 
-export function dataComposer(stationSensors) {
+const DataComposer = ({data}) => {
 
-    let dataSets = [];
-    let labels = [];
+    console.log(data);
 
-    for (let point of stationSensors[0].info.rows) {
-        labels.push(point.c[0].v)
-    }
-
-    for (let sensor of stationSensors) {
-        // Se crea un dataset por sensor en la estacion
-        let dataSet = {}
-        let data = []
-        // Se le añaden al dataset atributos básicos
-        dataSet.label = sensor.name
-        dataSet.borderColor = faker.color.rgb()
-        dataSet.backgroundColor = 'white'
-        dataSet.tension = 0.2
-        // Se añaden los datos necesarios al dataset
-        for (let point of sensor.info.rows) {
-            data.push(point.c[1].v)
-        }
-        dataSet.data = data
-        dataSets.push(dataSet)
-    }
-
-    return [dataSets, labels]
+    return(
+        <div>
+            {data.map((sensor, index) => 
+                <div key={index}>
+                    <Text fontSize='lg'>{parameterTextConverter(sensor.tableRow.parameter)}</Text>
+                    <Text fontSize='sm' color='gray.600'>Date : {sensor.tableRow.datetime}</Text>
+                    <Text fontSize='sm' color='gray.600'>Status : {sensor.tableRow.status}</Text>
+                    <Text fontSize='sm' color='gray.600'>Value : {sensor.tableRow.value} {unitSelector(sensor.tableRow.parameter)}</Text>
+                    <br></br>
+                </div>
+            )}
+        </div>
+    )
 }
 
-export default dataComposer;
+export default DataComposer;
