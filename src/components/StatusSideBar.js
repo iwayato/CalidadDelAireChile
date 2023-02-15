@@ -48,25 +48,25 @@ const StatusSideBar = (props) => {
             spacing={4}
             align='stretch'>
             <Heading size='md'>
-                Station sensors status
+                Estado general
             </Heading>
             <Box borderRadius='7px' h='40px' bg='green.200' p={2}>
-                Good : {good}
+                Bueno : {good}
             </Box>
             <Box borderRadius='7px' h='40px' bg='yellow.200' p={2}>
                 Regular : {regular}
             </Box>
             <Box borderRadius='7px' h='40px' bg='red.200' p={2}>
-                Alert : {alert}
+                Alerta : {alert}
             </Box>
             <Box borderRadius='7px' h='40px' bg='purple.200' p={2}>
-                Pre emergency : {pre}
+                Pre emergencia : {pre}
             </Box>
             <Box borderRadius='7px' h='40px' bg='purple.500' p={2}>
-                Emergency : {emer}
+                Emergenia : {emer}
             </Box>
             <Box borderRadius='7px' h='40px' bg='gray.200' p={2}>
-                Not available : {nota}
+                No disponible : {nota}
             </Box>
         </VStack>
     )

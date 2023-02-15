@@ -40,30 +40,26 @@ const Map = ({stationsData}) => {
                         <HStack
                             spacing={3}
                             align='stretch'>
-                            <Divider orientation='vertical'></Divider>
                             <VStack
                                 spacing={3}
                                 align='stretch'>
-                                <Heading size='md' color='gray'>{station.nombre}</Heading>
-                                <Divider></Divider>
+                                <Heading size='md' color='cadetblue'>{station.nombre}</Heading>
                                 <Text fontSize='sm' color='gray.600'>{station.region}</Text>
-                                <Text fontSize='sm' color='gray.600'>Comune : {station.comuna}</Text>
-                                <Divider></Divider>
-                                <Text fontSize='sm' color='gray.600'>Latitude : {station.latitud}</Text>
-                                <Text fontSize='sm' color='gray.600'>Longitude : {station.longitud}</Text>
+                                <Text fontSize='sm' color='gray.600'>Comuna : {station.comuna}</Text>
+                                <Text fontSize='sm' color='gray.600'>Latitud : {station.latitud}</Text>
+                                <Text fontSize='sm' color='gray.600'>Longitud : {station.longitud}</Text>
                             </VStack>
-                            <Divider orientation='vertical'></Divider>
-                            <Divider orientation='vertical'></Divider>
+                            <Divider></Divider>
+                            <Divider></Divider>
+                            <Divider></Divider>
                             <VStack
                                 spacing={3}
                                 align='stretch'>
-                                <Heading size='md' color='gray'>Latest register</Heading>
-                                <Divider></Divider>
+                                <Heading size='md' color='cadetblue'>Información sensores</Heading>
                                 <DataComposer 
                                     data = {station.realtime}>
                                 </DataComposer>
                             </VStack>
-                            <Divider orientation='vertical'></Divider>
                         </HStack>
                     </Tooltip>
                 </Marker>

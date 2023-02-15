@@ -1,7 +1,11 @@
 import { 
-    Text,
-    Grid,
-    GridItem,
+    TableContainer,
+    Table,
+    Thead,
+    Tr,
+    Th,
+    Tbody,
+    Td,
 } from '@chakra-ui/react'
 import { unitSelector } from './unitSelector.js'
 import { parameterTextConverter } from './parameterTextConverter.js'
@@ -9,19 +13,28 @@ import { parameterTextConverter } from './parameterTextConverter.js'
 const DataComposer = ({data}) => {
 
     return(
-        <Grid
-            templateColumns = 'repeat(3, 1fr)' 
-            templateRows = 'repeat(2, 1fr)'
-            gap={6}>
-            {data.map((sensor, index) => 
-                <GridItem key={index}>
-                    <Text fontSize='lg'>{parameterTextConverter(sensor.tableRow.parameter)}</Text>
-                    <Text fontSize='sm' color='gray.600'>Date : {sensor.tableRow.datetime}</Text>
-                    <Text fontSize='sm' color='gray.600'>Status : {sensor.tableRow.status}</Text>
-                    <Text fontSize='sm' color='gray.600'>Value : {sensor.tableRow.value} {unitSelector(sensor.tableRow.parameter)}</Text>
-                </GridItem>
-            )}
-        </Grid>
+        <TableContainer>
+            <Table size = 'sm' variant='striped' colorScheme='facebook'>
+                <Thead>
+                    <Tr>
+                        <Th>Parámetro</Th>
+                        <Th>Fecha</Th>
+                        <Th>Estado</Th>
+                        <Th>Valor</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {data.map((sensor, index) => 
+                        <Tr key={index}>
+                            <Td fontSize='sm'>{parameterTextConverter(sensor.tableRow.parameter)}</Td>
+                            <Td fontSize='sm' color='gray.600'>{sensor.tableRow.datetime}</Td>
+                            <Td fontSize='sm' color='gray.600'>{sensor.tableRow.status}</Td>
+                            <Td fontSize='sm' color='gray.600'>{sensor.tableRow.value} {unitSelector(sensor.tableRow.parameter)}</Td>
+                        </Tr>
+                    )}
+                </Tbody>
+            </Table>
+        </TableContainer>
     )
 }
 
