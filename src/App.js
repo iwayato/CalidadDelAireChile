@@ -74,11 +74,11 @@ function App() {
 
     return (
         <Grid
-            templateAreas={`"header header"
+            templateAreas = {`"header header"
                             "nav main"
                             "nav footer"`}
-            gridTemplateRows={'70px 1fr 30px'}
-            gridTemplateColumns={'250px 1fr'}
+            gridTemplateRows = {'70px 1fr 30px'}
+            gridTemplateColumns = {'320px 1fr'}
             color='blackAlpha.700'
             fontWeight='bold'>
 
@@ -220,7 +220,7 @@ function App() {
 
             <GridItem pl='2' bg='gray.600' area={'footer'} color='white'>
                 <Text marginTop='3px'>
-                    Hecho por {' '}
+                    Realizado por {' '}
                     <Link color='teal.500' href='https://github.com/iwayato'>
                         Tomoaki Iwaya Villalobos
                     </Link>

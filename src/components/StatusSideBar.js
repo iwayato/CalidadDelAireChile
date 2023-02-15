@@ -48,7 +48,7 @@ const StatusSideBar = (props) => {
             spacing={4}
             align='stretch'>
             <Heading size='md'>
-                Estado general
+                Estado general de los sensores
             </Heading>
             <Box borderRadius='7px' h='40px' bg='green.200' p={2}>
                 Bueno : {good}
