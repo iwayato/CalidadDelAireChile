@@ -78,15 +78,15 @@ function App() {
                             "nav main"
                             "nav footer"`}
             gridTemplateRows = {'70px 1fr 30px'}
-            gridTemplateColumns = {'320px 1fr'}
+            gridTemplateColumns = {'355px 1fr'}
             color='blackAlpha.700'
             fontWeight='bold'>
 
             <GridItem pl = '15px' bg = 'gray.100' area = {'header'}>
                 <HStack mt = '13px'>
-                    <Heading>Calidad del aire - {' '}
+                    <Heading> {' '}
                         <Link color='teal.500' href='https://sinca.mma.gob.cl/'>
-                            Chile
+                            Calidad del aire Chile
                         </Link>
                     </Heading>
                     <Box
@@ -219,12 +219,20 @@ function App() {
             </GridItem>
 
             <GridItem pl='2' bg='gray.600' area={'footer'} color='white'>
-                <Text marginTop='3px'>
-                    Realizado por {' '}
-                    <Link color='teal.500' href='https://github.com/iwayato'>
-                        Tomoaki Iwaya Villalobos
-                    </Link>
-                </Text>
+                <HStack>
+                    <Text marginTop='3px'>
+                        Realizado por {' '} {' '}
+                        <Link color='teal.500' href='https://github.com/iwayato'>
+                            Tomoaki Iwaya Villalobos
+                        </Link>
+                    </Text>
+                    <Text>
+                        -
+                    </Text>
+                    <Text>
+                        2023     
+                    </Text>                    
+                </HStack>
             </GridItem>
         </Grid>
     );

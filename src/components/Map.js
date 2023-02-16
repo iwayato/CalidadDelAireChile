@@ -11,14 +11,20 @@ import {
     Heading,
     Divider,
 } from '@chakra-ui/react';
+import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { iconSelector } from './iconSelector.js'
 import DataComposer from './DataComposer.js';
+
+const corner1 = L.latLng(-11.011774, -102.208789);
+const corner2 = L.latLng(-57.234297, -25.698563);
+const bounds = L.latLngBounds(corner1, corner2);
 
 const Map = ({stationsData}) => {
 
     return(
         <MapContainer
+            maxBounds={bounds}
             zoomControl={true}
             minZoom={4}
             dragging={true} 

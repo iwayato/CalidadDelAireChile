@@ -3,9 +3,23 @@ import {
     VStack,
     StackDivider,
     Heading,
+    Tooltip,
+    Text,
 } from "@chakra-ui/react";
+import { QuestionIcon } from '@chakra-ui/icons'
 
 const StatusSideBar = (props) => {
+
+    const toolTipText = () => {
+        return(
+            <Text align='justify'>
+                Indica si los sensores (independientemente del 
+                parámetro que midan) registran o no cantidades en
+                los rangos adecuados para la salud de las personas.
+                Siendo "Bueno" el mejor estado y "Emergencia" el peor.
+            </Text>
+        )
+    }
 
     let good = 0
     let regular = 0
@@ -49,23 +63,29 @@ const StatusSideBar = (props) => {
             align='stretch'>
             <Heading size='md'>
                 Estado general de los sensores
+                <Tooltip 
+                    label = {toolTipText()}>
+                    <QuestionIcon 
+                        marginLeft='15px' 
+                        marginBottom='4px'/>
+                </Tooltip>
             </Heading>
-            <Box borderRadius='7px' h='40px' bg='green.200' p={2}>
+            <Box borderRadius='7px' h='40px' bg='mediumseagreen' p={2}>
                 Bueno : {good}
             </Box>
-            <Box borderRadius='7px' h='40px' bg='yellow.200' p={2}>
+            <Box borderRadius='7px' h='40px' bg='gold' p={2}>
                 Regular : {regular}
             </Box>
-            <Box borderRadius='7px' h='40px' bg='red.200' p={2}>
+            <Box borderRadius='7px' h='40px' bg='tomato' p={2}>
                 Alerta : {alert}
             </Box>
-            <Box borderRadius='7px' h='40px' bg='purple.200' p={2}>
+            <Box borderRadius='7px' h='40px' bg='violet' p={2}>
                 Pre emergencia : {pre}
             </Box>
-            <Box borderRadius='7px' h='40px' bg='purple.500' p={2}>
-                Emergenia : {emer}
+            <Box borderRadius='7px' h='40px' bg='darkorchid' p={2}>
+                Emergencia : {emer}
             </Box>
-            <Box borderRadius='7px' h='40px' bg='gray.200' p={2}>
+            <Box borderRadius='7px' h='40px' bg='gainsboro' p={2}>
                 No disponible : {nota}
             </Box>
         </VStack>
