@@ -66,8 +66,7 @@ function App() {
                     speed='0.65s'
                     emptyColor='gray.200'
                     color='blue.500'
-                    size='xl'
-                />
+                    size='xl'/>
             </Center>
         )
     }
@@ -93,7 +92,7 @@ function App() {
                         onClick={onOpen}
                         as = {Button} 
                         left = 'calc(100% - 675px)'>
-                            ¿Qué es lo que se esta midiendo?
+                            ¿Qué es lo que se está midiendo?
                     </Box>
                 </HStack>
             </GridItem>

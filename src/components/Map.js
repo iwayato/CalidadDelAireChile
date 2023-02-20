@@ -3,18 +3,19 @@ import {
     TileLayer,
     Marker,
     Tooltip,
+    Popup,
 } from 'react-leaflet'
 import {
     HStack,
     VStack,
     Text,
     Heading,
-    Divider,
 } from '@chakra-ui/react';
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { iconSelector } from './iconSelector.js'
 import DataComposer from './DataComposer.js';
+import { InfoIcon } from '@chakra-ui/icons';
 
 const corner1 = L.latLng(-11.011774, -102.208789);
 const corner2 = L.latLng(-57.234297, -25.698563);
@@ -42,31 +43,38 @@ const Map = ({stationsData}) => {
                     icon={iconSelector(station.realtime)}
                     key={station.key}
                     position={[station.latitud, station.longitud]}>
-                    <Tooltip opacity={1}>
-                        <HStack
+                    <Popup
+                        maxHeight='1000px'
+                        maxWidth='1000px'>
+                        <VStack
                             spacing={3}
                             align='stretch'>
-                            <VStack
-                                spacing={3}
-                                align='stretch'>
-                                <Heading size='md' color='cadetblue'>{station.nombre}</Heading>
-                                <Text fontSize='sm' color='gray.600'>{station.region}</Text>
-                                <Text fontSize='sm' color='gray.600'>Comuna : {station.comuna}</Text>
-                                <Text fontSize='sm' color='gray.600'>Latitud : {station.latitud}</Text>
-                                <Text fontSize='sm' color='gray.600'>Longitud : {station.longitud}</Text>
-                            </VStack>
-                            <Divider></Divider>
-                            <Divider></Divider>
-                            <Divider></Divider>
-                            <VStack
-                                spacing={3}
-                                align='stretch'>
-                                <Heading size='md' color='cadetblue'>Información sensores</Heading>
-                                <DataComposer 
-                                    data = {station.realtime}>
-                                </DataComposer>
-                            </VStack>
-                        </HStack>
+                            <Heading size='md' color='cadetblue'>Información sensores</Heading>
+                            <DataComposer 
+                                data = {station.realtime}>
+                            </DataComposer>
+                        </VStack>
+                    </Popup>
+                    <Tooltip
+                        opacity={1}
+                        direction='bottom'>
+                        <VStack
+                            spacing={3}
+                            align='stretch'>
+                            <Heading size='md' color='cadetblue'>{station.nombre}</Heading>
+                            <Text fontSize='sm' color='gray.600'>{station.region}</Text>
+                            <Text fontSize='sm' color='gray.600'>Comuna : {station.comuna}</Text>
+                            <Text fontSize='sm' color='gray.600'>Latitud : {station.latitud}</Text>
+                            <Text fontSize='sm' color='gray.600'>Longitud : {station.longitud}</Text>
+                            <HStack>
+                                <InfoIcon
+                                    mb='3px'
+                                    color='gray.600'
+                                    boxSize='1.5em'>
+                                </InfoIcon>
+                                <Text fontSize='md' color='cadetblue'>Click para más información</Text>
+                            </HStack>
+                        </VStack>
                     </Tooltip>
                 </Marker>
             )}
