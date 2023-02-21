@@ -96,6 +96,34 @@ function App() {
                     </Box>
                 </HStack>
             </GridItem>
+            
+            <GridItem bg='gray.400' area={'nav'}>
+                <StatusSideBar
+                    data = {data}>
+                </StatusSideBar>
+            </GridItem>
+
+            <GridItem area={'main'}>
+                {/* Map Component With Props */}
+                <Map stationsData = {data}/>
+            </GridItem>
+
+            <GridItem pl='2' bg='gray.600' area={'footer'} color='white'>
+                <HStack>
+                    <Text marginTop='3px'>
+                        Realizado por {' '} {' '}
+                        <Link color='teal.500' href='https://github.com/iwayato'>
+                            Tomoaki Iwaya Villalobos
+                        </Link>
+                    </Text>
+                    <Text>
+                        -
+                    </Text>
+                    <Text>
+                        2023     
+                    </Text>                    
+                </HStack>
+            </GridItem>
 
             <Modal size='xl' scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -206,33 +234,6 @@ function App() {
                 </ModalContent>
             </Modal>
 
-            <GridItem bg='gray.400' area={'nav'}>
-                <StatusSideBar
-                    data = {data}>
-                </StatusSideBar>
-            </GridItem>
-
-            <GridItem area={'main'}>
-                {/* Map Component With Props */}
-                <Map stationsData = {data}/>
-            </GridItem>
-
-            <GridItem pl='2' bg='gray.600' area={'footer'} color='white'>
-                <HStack>
-                    <Text marginTop='3px'>
-                        Realizado por {' '} {' '}
-                        <Link color='teal.500' href='https://github.com/iwayato'>
-                            Tomoaki Iwaya Villalobos
-                        </Link>
-                    </Text>
-                    <Text>
-                        -
-                    </Text>
-                    <Text>
-                        2023     
-                    </Text>                    
-                </HStack>
-            </GridItem>
         </Grid>
     );
 }

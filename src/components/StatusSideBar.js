@@ -2,14 +2,20 @@ import {
     Box,
     VStack,
     HStack,
-    StackDivider,
+    Divider,
     Heading,
     Tooltip,
     Text,
     StatNumber,
     Stat,
+    Button,
+    SimpleGrid
 } from "@chakra-ui/react";
 import { QuestionIcon } from '@chakra-ui/icons'
+import PDFRender from "./PDFRender";
+import { CSVLink } from "react-csv";
+import { parameterTextConverter } from "./parameterTextConverter";
+import { unitSelectorPDF } from "./unitSelectorPDF";
 
 const StatusSideBar = (props) => {
 
@@ -58,10 +64,29 @@ const StatusSideBar = (props) => {
         )
     }
 
+    const dataCSV = [];
+    const date = Date().split(" ");
+    const dateStr = date[0] + "_" + date[1] + "_" + date[2] + "_" + date[3];
+
+    dataCSV.push(["Estación", "Parámetro", "Fecha", "Estado", "Valor", "Unidad"]);
+
+    for (let station of props.data) {
+        for (let sensor of station.realtime) {
+            const row = [
+                station.nombre, 
+                parameterTextConverter(sensor.tableRow.parameter), 
+                sensor.tableRow.datetime, 
+                sensor.tableRow.status, 
+                sensor.tableRow.value,
+                unitSelectorPDF(sensor.tableRow.parameter)
+            ];
+            dataCSV.push(row);
+        }
+    }
+
     return(
         <VStack
             margin='15px'
-            divider={<StackDivider borderColor='gray.500'/>}
             spacing={4}
             align='stretch'>
             <Heading size='md'>
@@ -145,6 +170,22 @@ const StatusSideBar = (props) => {
                     </Stat>
                 </Box>
             </HStack>
+            <Divider></Divider>
+            <Heading size='md'>Descargar información</Heading>
+            <SimpleGrid
+                columns={2}
+                spacing={3}>
+                <Button
+                    colorScheme='blue'
+                    onClick={() => PDFRender(props)}>
+                    PDF
+                </Button>
+                <CSVLink
+                    data = {dataCSV}
+                    filename = {`report_${dateStr}.csv`}>
+                    <Button width='100%' colorScheme='green'>CSV</Button>
+                </CSVLink>
+            </SimpleGrid>
         </VStack>
     )
 }

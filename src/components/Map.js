@@ -10,6 +10,7 @@ import {
     VStack,
     Text,
     Heading,
+    Divider
 } from '@chakra-ui/react';
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
@@ -64,6 +65,7 @@ const Map = ({stationsData}) => {
                             <Heading size='md' color='cadetblue'>{station.nombre}</Heading>
                             <Text fontSize='sm' color='gray.600'>{station.region}</Text>
                             <Text fontSize='sm' color='gray.600'>Comuna : {station.comuna}</Text>
+                            <Divider></Divider>
                             <Text fontSize='sm' color='gray.600'>Latitud : {station.latitud}</Text>
                             <Text fontSize='sm' color='gray.600'>Longitud : {station.longitud}</Text>
                             <HStack>

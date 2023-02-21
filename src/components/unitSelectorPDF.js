@@ -1,12 +1,12 @@
-export function unitSelector(parameterType) {
+export function unitSelectorPDF(parameterType) {
 
     switch (parameterType) {
         case "MP 2,5":
-            return 'μg/m³'
+            return 'micro g/m³'
         case "MP 10":
-            return 'μg/m³N'
+            return 'micro g/m³N'
         case "Di&oacute;xido de azufre":
-            return 'μg/m³N'
+            return 'micro g/m³N'
         case "Di&oacute;xido de nitr&oacute;geno":
             return 'ppbv'
         case "Mon&oacute;xido de carbono":
@@ -18,4 +18,4 @@ export function unitSelector(parameterType) {
     }
 }
 
-export default unitSelector;
+export default unitSelectorPDF;
