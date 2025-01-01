@@ -7,8 +7,8 @@ import {
     Tbody,
     Td,
 } from '@chakra-ui/react'
-import { unitSelector } from './unitSelector.js'
-import { parameterTextConverter } from './parameterTextConverter.js'
+import { unitSelector } from '../helpers/unitSelector.js'
+import { parameterTextConverter } from '../helpers/parameterTextConverter.js'
 
 const DataComposer = ({data}) => {
 

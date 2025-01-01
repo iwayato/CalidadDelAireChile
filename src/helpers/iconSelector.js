@@ -1,4 +1,4 @@
-import Icons from "./Icons";
+import Icons from "../components/Icons";
 
 // realtime es un array de largo variable dependiendo la cantidad de sensores de la estacion
 export function iconSelector(realtime) {

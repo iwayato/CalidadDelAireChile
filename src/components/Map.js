@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
-import { iconSelector } from './iconSelector.js'
+import { iconSelector } from '../helpers/iconSelector.js'
 import DataComposer from './DataComposer.js';
 import { InfoIcon } from '@chakra-ui/icons';
 

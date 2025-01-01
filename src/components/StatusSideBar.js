@@ -13,10 +13,10 @@ import {
     Show
 } from "@chakra-ui/react";
 import { QuestionIcon } from '@chakra-ui/icons'
-import PDFRender from "./PDFRender";
+import PDFRender from "../helpers/PDFRender";
 import { CSVLink } from "react-csv";
-import { parameterTextConverter } from "./parameterTextConverter";
-import { unitSelectorPDF } from "./unitSelectorPDF";
+import { parameterTextConverter } from "../helpers/parameterTextConverter";
+import { unitSelectorPDF } from "../helpers/unitSelectorPDF";
 
 const StatusSideBar = (props) => {
 
