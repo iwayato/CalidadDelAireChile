@@ -9,7 +9,8 @@ import {
     StatNumber,
     Stat,
     Button,
-    SimpleGrid
+    SimpleGrid,
+    Show
 } from "@chakra-ui/react";
 import { QuestionIcon } from '@chakra-ui/icons'
 import PDFRender from "./PDFRender";
@@ -85,108 +86,111 @@ const StatusSideBar = (props) => {
     }
 
     return(
-        <VStack
-            margin='15px'
-            spacing={4}
-            align='stretch'>
-            <Heading size='md'>
-                Estado general de los sensores
-                <Tooltip 
-                    label = {toolTipText()}>
-                    <QuestionIcon 
-                        marginLeft='15px' 
-                        marginBottom='4px'/>
-                </Tooltip>
-            </Heading>
-            <HStack borderRadius='7px' bg='mediumseagreen'>
-                <Box h='40px' w='80%' p={2}>
-                    Bueno
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {good}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <HStack borderRadius='7px' bg='gold'>
-                <Box h='40px' w='80%' p={2}>
-                    Regular
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {regular}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <HStack borderRadius='7px' bg='tomato'>
-                <Box h='40px' w='80%' p={2}>
-                    Alerta
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {alert}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <HStack borderRadius='7px' bg='violet' >
-                <Box h='40px' w='80%' p={2}>
-                    Pre emergencia
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {pre}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <HStack borderRadius='7px' bg='darkorchid'>
-                <Box h='40px' w='80%' p={2}>
-                    Emergencia
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {emer}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <HStack borderRadius='7px' bg='gray'>
-                <Box h='40px' w='80%' p={2}>
-                    No disponible
-                </Box>
-                <Box h='40px' w='20%'>
-                    <Stat>
-                        <StatNumber>
-                            {nota}
-                        </StatNumber>
-                    </Stat>
-                </Box>
-            </HStack>
-            <Divider></Divider>
-            <Heading size='md'>Descargar información</Heading>
-            <SimpleGrid
-                columns={2}
-                spacing={3}>
-                <Button
-                    colorScheme='blue'
-                    onClick={() => PDFRender(props)}>
-                    PDF
-                </Button>
-                <CSVLink
-                    data = {dataCSV}
-                    filename = {`report_${dateStr}.csv`}>
-                    <Button width='100%' colorScheme='green'>CSV</Button>
-                </CSVLink>
-            </SimpleGrid>
-        </VStack>
+        <Show breakpoint='(min-width: 800px)'>
+            <VStack
+                margin='15px'
+                spacing={4}
+                align='stretch'
+            >
+                <Heading size='md'>
+                    Estado general de los sensores
+                    <Tooltip 
+                        label = {toolTipText()}>
+                        <QuestionIcon 
+                            marginLeft='15px' 
+                            marginBottom='4px'/>
+                    </Tooltip>
+                </Heading>
+                <HStack borderRadius='7px' bg='mediumseagreen'>
+                    <Box h='40px' w='80%' p={2}>
+                        Bueno
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {good}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <HStack borderRadius='7px' bg='gold'>
+                    <Box h='40px' w='80%' p={2}>
+                        Regular
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {regular}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <HStack borderRadius='7px' bg='tomato'>
+                    <Box h='40px' w='80%' p={2}>
+                        Alerta
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {alert}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <HStack borderRadius='7px' bg='violet' >
+                    <Box h='40px' w='80%' p={2}>
+                        Pre emergencia
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {pre}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <HStack borderRadius='7px' bg='darkorchid'>
+                    <Box h='40px' w='80%' p={2}>
+                        Emergencia
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {emer}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <HStack borderRadius='7px' bg='gray'>
+                    <Box h='40px' w='80%' p={2}>
+                        No disponible
+                    </Box>
+                    <Box h='40px' w='20%'>
+                        <Stat>
+                            <StatNumber>
+                                {nota}
+                            </StatNumber>
+                        </Stat>
+                    </Box>
+                </HStack>
+                <Divider></Divider>
+                <Heading size='md'>Descargar información</Heading>
+                <SimpleGrid
+                    columns={2}
+                    spacing={3}>
+                    <Button
+                        colorScheme='blue'
+                        onClick={() => PDFRender(props)}>
+                        PDF
+                    </Button>
+                    <CSVLink
+                        data = {dataCSV}
+                        filename = {`report_${dateStr}.csv`}>
+                        <Button width='100%' colorScheme='green'>CSV</Button>
+                    </CSVLink>
+                </SimpleGrid>
+            </VStack>
+        </Show>
     )
 }
 
